@@ -13,13 +13,16 @@ jobs:
           php-version: 7.4
           extensions: mbstring, ctype, fileinfo, openssl, PDO, bcmath, json, tokenizer, xml
 
-      - name: Intall Composer dependencies
-         run: composer install
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+      - name: Install Composer dependencies
+        run: composer install
 
       - name: Generate App Key
-         run: php artisan key:generate
+        run: php artisan key:generate
 
       - name: Execute tests
-         run: vendor/bin/phpunit
+        run: vendor/bin/phpunit
 
 
