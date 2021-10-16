@@ -13,9 +13,6 @@ jobs:
           php-version: 7.4
           extensions: mbstring, ctype, fileinfo, openssl, PDO, bcmath, json, tokenizer, xml
 
-      - name: Copy .env
-         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-
       - name: Intall Composer dependencies
          run: composer install
 
